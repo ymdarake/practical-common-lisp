@@ -3,11 +3,15 @@
 - `C-x o` next buffer.
 - `C-x k` to kill the current buffer.
 - `C-x b` to choose the buffer to focus on.
+- `C-space` to start selection.
+- `M-w` to copy.
+- `C-w` to cut.
+- `C-y` to paste.
 - `C-/` to undo.
+- `C-c C-l` on the file.
 - `C-c C-c` compile.
 - `C-c C-z` REPL.
 - `,` on REPL and `quit` to close slime buffers. `M-x slime` to start SLIME.
 - invoke error on REPL to dive into debugger mode. `q` to quit.
 - `(load "/path/to/file")` to load file (on REPL).
-- or `C-c C-l` on the file.
 - `M-p` to recall previous commands on REPL.
