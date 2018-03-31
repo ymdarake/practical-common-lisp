@@ -2,6 +2,7 @@
 - `C-x C-e` evaluate at the ending parenthesis.
 - `C-x o` next buffer.
 - `C-x k` to kill the current buffer.
+- `C-x b` to choose the buffer to focus on.
 - `C-/` to undo.
 - `C-c C-c` compile.
 - `C-c C-z` REPL.
@@ -9,3 +10,4 @@
 - invoke error on REPL to dive into debugger mode. `q` to quit.
 - `(load "/path/to/file")` to load file (on REPL).
 - or `C-c C-l` on the file.
+- `M-p` to recall previous commands on REPL.
