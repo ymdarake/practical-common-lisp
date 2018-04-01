@@ -1,6 +1,10 @@
 ## SLIME commands
 - `C-x C-e` evaluate at the ending parenthesis.
 - `C-x o` next buffer.
+- `C-x 0` close current window.
+- `C-x 1` close all windows except the current one.
+- `C-x 2` split the current window in two vertically.
+- `C-x 3` split the current window in two horizontally.
 - `C-x k` to kill the current buffer.
 - `C-x b` to choose the buffer to focus on.
 - `C-space` to start selection.
@@ -8,7 +12,7 @@
 - `C-w` to cut.
 - `C-y` to paste.
 - `C-/` to undo.
-- `C-c C-l` on the file.
+- `C-c C-l` load the current file.
 - `C-c C-c` compile.
 - `C-c C-z` REPL.
 - `,` on REPL and `quit` to close slime buffers. `M-x slime` to start SLIME.
