@@ -11,6 +11,7 @@
 - `M-w` to copy.
 - `C-w` to cut.
 - `C-y` to paste.
+- `M-;` to comment.
 - `C-/` to undo.
 - `C-c C-l` load the current file.
 - `C-c C-c` compile.
