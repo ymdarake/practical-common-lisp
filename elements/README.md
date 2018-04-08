@@ -36,11 +36,11 @@
       - others(self-evaluating)
     - list
       - function call
-        - (function0name *arguments) where each argument is as itself a lisp expression
-      - special form
-        - if
-        - quote (')
-        - let
+        - (function-name *arguments) where each argument is as itself a lisp expression
+      - special form (such as ...)
+        - `if`
+        - `quote` `'`
+        - `let`
       - macro
         - take an s-expression as an argument (s-expression is still not evaluated)
         - evaluate the form returned by the macro (in the ordinary way)
