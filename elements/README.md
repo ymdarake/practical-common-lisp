@@ -20,3 +20,40 @@
 - invoke error on REPL to dive into debugger mode. `q` to quit.
 - `(load "/path/to/file")` to load file (on REPL).
 - `M-p` to recall previous commands on REPL.
+
+## Common Lisp syntax and semantics
+- s-expression
+  - list
+  - atom
+  - intern - package
+- Reader
+  - generating lisp objects called s-expression from text
+- Evaluator
+  - deciding valid lisp form
+    - atoms and lists whose head is a symbol
+    - atom
+      - symbol(recognized as a name of a variable. and keyword symbol)
+      - others(self-evaluating)
+    - list
+      - function call
+        - (function0name *arguments) where each argument is as itself a lisp expression
+      - special form
+        - if
+        - quote (')
+        - let
+      - macro
+        - take an s-expression as an argument (s-expression is still not evaluated)
+        - evaluate the form returned by the macro (in the ordinary way)
+        - when compiled, all macro forms are extracted, but compiled code will not be evaluated until loaded
+- true/false
+  - `NIL` is the only value representing `false`. Others are all truthy.
+  - empty list `()` is completely equivalent to `NIL`
+  - standard value representing `true` is `t`
+- equality
+  - `eq`
+    - comparing objects
+    - comparing strings or int is dependent on processing system
+  - `eql`
+    - comparing objects
+    - objects representing the same value are 'equal' if the objects' class are the same
+  - `equal` and `equalp` ...
