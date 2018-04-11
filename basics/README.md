@@ -1,4 +1,10 @@
-## SLIME commands
+## Emacs commands
+- `C-f` move forward one character.
+- `C-b` move backward one character.
+- `C-n` move down one screen line. (`move next-line`)
+- `C-p` move up one screen line. (`move previous-line`)
+- `C-a` move to the beggining of the line.
+- `C-e` move to the end of the line.
 - `C-x C-e` evaluate at the ending parenthesis.
 - `C-x o` next buffer.
 - `C-x 0` close current window.
