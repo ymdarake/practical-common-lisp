@@ -31,6 +31,21 @@
 (defun rest-and-keyword (&rest rest &key a b c) (list rest a b c)); (foo :a 1 :b 2 :c 3) -> ((:A 1 :B 2 :C 3) 1 2 3)
 
 
+;;; function as data, or higher order function
+
+;; funcall
+;; we can call function by object
+(defun plot (fn min max step)
+  (loop for i from min to max by step do
+        (loop repeat (funcall fn i) do (format t "*"))
+        (format t "~%")))
+; (plot #'exp 0 4 1/2
+
+;; apply
+;; we can call function by object
+;; we can call function with parameters whose last element can be a list
+; (apply #'plot #'expr plot-data)
+(defvar plot-data (list 0 4 1/2))
 
 
 
