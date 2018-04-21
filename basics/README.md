@@ -21,6 +21,7 @@
 - `C-/` to undo.
 - `C-c C-l` load the current file.
 - `C-c C-c` compile.
+- `C-c retrun` macroexpand-1.
 - `C-c C-z` REPL.
 - `,` on REPL and `quit` to close slime buffers. `M-x slime` to start SLIME.
 - invoke error on REPL to dive into debugger mode. `q` to quit.
