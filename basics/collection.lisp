@@ -49,4 +49,14 @@
 (count "foo" #("foo" "bar" "baz") :test #'string=); 1
 ; `:key` to specify the 1-argument function with which you test the equality of keys
 (find 'c #((a 10) (b 20) (c 30) (d 40)) :key #'first); (C 30)
+; we can limit the effect of the function to specific range of the sequence
+; using `:start` `:end` `:from-end`
+(find 'a #((a 10) (b 20) (a 30) (b 40)) :key #'first); (A 10)
+(find 'a #((a 10) (b 20) (a 30) (b 40)) :key #'first :from-end t); (A 30)
+; we can limit the number of removed/replaced elements
+; using `:count`
+(remove #\a "foobarbaz" :count 1); "foobrbaz"
+(remove #\a "foobarbaz" :count 1 :from-end t); "foobarbz"
+
+
 
