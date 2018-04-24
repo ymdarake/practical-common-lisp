@@ -5,6 +5,10 @@
 - `C-p` move up one screen line. (`move previous-line`)
 - `C-a` move to the beggining of the line.
 - `C-e` move to the end of the line.
+- `M-f` move forward one word. 
+- `M-b` move backward one word.
+- `M-a` move to the beggining of the paragraph.
+- `M-e` move to the end of the paragraph.
 - `C-x C-e` evaluate at the ending parenthesis.
 - `C-x o` next buffer.
 - `C-x 0` close current window.
@@ -22,6 +26,7 @@
 - `C-c C-l` load the current file.
 - `C-c C-c` compile.
 - `C-c retrun` macroexpand-1.
+- `C-c C-d C-d` open document.
 - `C-c C-z` REPL.
 - `,` on REPL and `quit` to close slime buffers. `M-x slime` to start SLIME.
 - invoke error on REPL to dive into debugger mode. `q` to quit.
@@ -32,7 +37,7 @@
 - s-expression
   - list
   - atom
-  - intern - package
+    - intern - package
 - Reader
   - generating lisp objects called s-expression from text
 - Evaluator
