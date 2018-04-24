@@ -100,4 +100,17 @@
 (mismatch "same" "same"); NIL
 (mismatch "abcd-tail" "wxyz-tail" :from-end t); 4, which represents the index of its common suffix.
 
+; predicate
+(every #'evenp #(1 2 3 4 5)); NIL
+(some #'evenp #(1 2 3 4 5)); T
+(notany #'evenp #(1 2 3 4 5)); NIL
+(notevery #'evenp #(1 2 3 4 5)); T
+
+(every #'> #(1 2 3 4) #(5 4 3 2)); NIL
+(some #'> #(1 2 3 4) #(5 4 3 2)); T
+(notany #'> #(1 2 3 4) #(5 4 3 2)); NIL
+(notevery #'> #(1 2 3 4) #(5 4 3 2)); T
+
+
+
 
