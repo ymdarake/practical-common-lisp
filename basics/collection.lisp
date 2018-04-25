@@ -112,5 +112,41 @@
 (notevery #'> #(1 2 3 4) #(5 4 3 2)); T
 
 
+; sequence mapping
+(map 'vector #'* #(1 2 3 4 5) #(10 9 8 7 6)); zipped into one sequence
+(let ((a #(1 2 3))
+      (b #(4 5 6))
+      (c #(6 7 8)))
+  (map-into a #'+ a b c))
 
+; extract one value from one sequence
+(reduce #'+ #(1 2 3 4 5 6 7 8 9 10)); fold
+(reduce #'max #(1 2 3 4 5 6 7 8 9 10))
+
+
+; hash table
+(defparameter *h* (make-hash-table))
+(gethash 'foo *h*); NIL
+(setf (gethash 'foo *h*) 'quux)
+(gethash 'foo *h*); QUUX
+
+; gethash actually returns 2 values
+(defun show-values (key hash-table)
+  (multiple-value-bind (value present?) (gethash key hash-table)
+    (if present?
+        (format nil "Value ~a actually present." value)
+        (format nil "Value ~a because key not found." value))))
+(show-values 'foo *h*); "Value QUUX actually present."
+(setf (gethash 'bar *h*) nil)
+(show-values 'bar *h*); "Value NIL actually present."
+(show-values 'baz *h*); "Value NIL because key not found."
+;(remhash 'bar *h*); delete key
+;(clrhash *h*); clear entire the hash table.
+
+; iterate through a hash table.
+(maphash #'(lambda (k v) (format t "~a => ~a~%" k v)) *h*)
+; DO NOT add/remove elements while iterating over a hash table except following 2 cases:
+; (RESULT UNDEFINED)
+(maphash #'(lambda (k v) (when (< v 10) (remhash k *h*))) *h*)
+; we can also use the loop macro.
 
