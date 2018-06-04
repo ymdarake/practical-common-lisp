@@ -39,6 +39,31 @@
 (directory-namestring #p"/foo/bar/baz.txt"); "/foo/bar/"
 (file-namestring #p"/foo/bar/baz.txt"); "baz.txt"
 
+;; MAKE-PATHNAME 
+(make-pathname
+ :directory '(:absolute "foo" "bar")
+ :name "baz"
+ :type "txt"); #p"/foo/bar/baz.txt" !CAUTION!: platform-dependent.
+(make-pathname :type "html" :defaults input-file)
+(make-pathname :directory '(:relative "backups") :defaults input-file)
+
+;; MERGE-PATHNAMES
+(merge-pathnames #p"foo/bar.html" #p"/www/html/"); #p"/www/html/foo/bar.html"
+(merge-pathnames #p"foo/bar.html" #p"html/"); #p"html/foo/bar.html"
+
+;; ENOUGH-NAMESTRING
+(enough-namestring #p"/www/html/foo/bar.html" #p"/www/"); #p"html/foo/bar.html"
+(merge-pathnames
+ (enough-namestring #p"/www/html/foo/bar/baz.html" #p"/www/")
+ #p"/www-backups/"); #p"/www-backups/html/foo/bar/baz.html"
+
+
+
+(with-open-file (out (ensure-directories-exist name) :direction :output)
+  ;...
+  )
+(with-open-file (in filename :element-type '(unsigned-byte 8))
+  (file-length in))
 
 
 
