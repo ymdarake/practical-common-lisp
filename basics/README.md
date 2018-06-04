@@ -5,6 +5,7 @@
 - `C-p` move up one screen line. (`move previous-line`)
 - `C-a` move to the beggining of the line.
 - `C-e` move to the end of the line.
+- `C-m` new line.
 - `M-f` move forward one word. 
 - `M-b` move backward one word.
 - `M-a` move to the beggining of the paragraph.
