@@ -67,3 +67,47 @@
    :type nil
    :defaults wildcard))
 
+
+(defun file-exists-p (pathname)
+  #+(or sbcl lispworks openmcl)
+  (probe-file pathname)
+
+  #+(or allegro cmu)
+  (or (probe-file (pathname-as-directory pathname))
+      (probe-file pathname))
+
+  #+clisp
+  (or (ignore-errors
+       (probe-file (pathname-as-file pathname)))
+      (ignore-errors
+       (let ((directory-form (pathname-as-directory pathname)))
+         (when (ext:probe-directory directory-form)
+           directory-form))))
+
+  #-(or sbcl cmu lispworks openmcl allegro clisp)
+  (error "file-exists-p not implemented"))
+
+(defun pathname-as-file (name)
+  (let ((pathname (pathname name)))
+    (when (wild-pathname-p pathname)
+      (error "Can't reliably convert wild pathnames."))
+    (if (directory-pathname-p name)
+        (let* ((directory (pathname-directory pathname))
+               (name-and-type (pathname (first (last directory)))))
+          (make-pathname
+           :directory (butlast directory)
+           :name (pathname-name name-and-type)
+           :type (pathname-type name-and-type)
+           :defaults pathname))
+        pathname)))
+
+(defun walk-directory (dirname fn &key directories (test (constantly t)))
+  (labels
+      ((walk (name)
+         (cond
+           ((directory-pathname-p name)
+            (when (and directories (funcall test name))
+              (funcall fn name))
+            (dolist (x (list-directory name)) (walk x)))
+           ((funcall test name) (funcall fn name)))))
+    (walk (pathname-as-directory dirname))))

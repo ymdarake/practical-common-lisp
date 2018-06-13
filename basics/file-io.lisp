@@ -65,5 +65,3 @@
 (with-open-file (in filename :element-type '(unsigned-byte 8))
   (file-length in))
 
-
-

@@ -19,11 +19,13 @@
 - `C-x k` to kill the current buffer.
 - `C-x b` to choose the buffer to focus on.
 - `C-space` to start selection.
+- `C-s` to search.`
 - `M-w` to copy.
 - `C-w` to cut.
 - `C-y` to paste.
 - `M-;` to comment.
 - `C-/` to undo.
+- `C-g C-/` to redo.
 - `C-c C-l` load the current file.
 - `C-c C-c` compile.
 - `C-c retrun` macroexpand-1.
