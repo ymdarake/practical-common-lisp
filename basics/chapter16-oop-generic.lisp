@@ -17,3 +17,12 @@
   (withdraw (proxied-account proxy) amount))
 
 
+;; before, after, around
+
+(defmethod withdraw :before ((account checking-account) amount)
+  (let ((overdraft (- amount (balance account))))
+    (when (plusp overdraft)
+      (withdraw (overdraft-account account) overdraft)
+      (incf (balance account) overdraft))))
+
+
