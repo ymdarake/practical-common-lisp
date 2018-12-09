@@ -30,12 +30,29 @@
 (defclass bank-account ()
   ((customer-name
     :initarg :customer-name
-    :initform (error "Must supply a customer name."))
+    :initform (error "Must supply a customer name.")
+    :accessor customer-name
+    :documentation "Name of the customer")
    (balance
     :initarg :balance
-    :initform 0)
+    :initform 0
+    :reader balance
+    :documentation "Current balance")
    (account-number
-    :initform (incf *account-numbers*))))
+    :initform (incf *account-numbers*)
+    :reader account-number
+    :documentation "Account number (unique in a bank)")
+   (account-type
+    :reader account-type
+    :documentation "Type of the account. :gold, :silver, :bronze")))
+
+(defmethod initialize-instance :after ((account bank-account) &key)
+  (let ((balance (slot-value account 'balance)))
+    (setf (slot-value account 'account-type)
+          (cond
+            ((>= balance 100000) :gold)
+            ((>= balance 50000) :silver)
+            (t :bronze)))))
 
 ; (defparameter *account* (make-instance 'bank-account))
 
