@@ -36,7 +36,7 @@
    (balance
     :initarg :balance
     :initform 0
-    :reader balance
+    :accessor balance
     :documentation "Current balance")
    (account-number
     :initform (incf *account-numbers*)
@@ -53,6 +53,21 @@
             ((>= balance 100000) :gold)
             ((>= balance 50000) :silver)
             (t :bronze)))))
+
+;; with-slots
+(defmethod assess-low-balance-penalty ((account bank-account))
+  (with-slots (balance) account
+    (when (< balance 100)
+      (decf balance (* balance .01)))))
+
+;; with-accessor
+(defmethod merge-accounts ((account1 bank-account) (account2 bank-account))
+  (with-accessors ((balance1 balance)) account1
+    (with-accessors ((balance2 balance)) account2
+      (incf balance1 balance2)
+      (setf balance2 0))))
+
+
 
 ; (defparameter *account* (make-instance 'bank-account))
 
